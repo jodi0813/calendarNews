@@ -7,7 +7,7 @@ function useNews({ startDate, endDate, keywordGroupIds = "1,2" }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get("https://cors-anywhere.herokuapp.com/https://eunomics.net/get_posts", {
+    axios.get("/api/get_posts", {
         params: {
           keyword_group_ids: keywordGroupIds,
           start_date: startDate,

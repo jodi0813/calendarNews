@@ -12,7 +12,7 @@ function NewsFilter({ selected, setSelected }) {
   return (
     <>
       <div className="categorys">
-        <div className="categoryTitle">請選擇新聞類別</div>
+        <div className="categoryTitle">請勾選新聞類別</div>
         {NewsCategory.map((category, i) => (
           <label key={i} className="labelBox">
             <input

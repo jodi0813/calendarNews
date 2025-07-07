@@ -1,7 +1,25 @@
 .calendarBox {
   background-color: #fff;
+  .rbc-date-cell {
+    color: #040320;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .rbc-now {
+    color: #f00c05 !important;
+  }
+  .rbc-header {
+    color: #040320;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+  }
 
-
+  .rbc-toolbar-label {
+    color: #040320;
+    font-weight: 600;
+    font-size: 20px;
+  }
 
   .event-biotech {
     background-color: #f8b8b8;
@@ -60,13 +78,13 @@
     background: #fff;
     width: 80%;
     padding: 50px;
-    border-radius: 12px;
+    // border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     text-align: center;
     display: flex;
     flex-direction: column;
     position: relative;
-    gap: 6%;
+    gap: 3%;
     height: 80%;
     overflow-y: auto;
     button {
@@ -76,12 +94,18 @@
       position: absolute;
       right: 20px;
       top: 10px;
+      &:focus,
+      &:active {
+        outline: none;
+        box-shadow: none;
+      }
     }
     .popupDate {
       width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: end;
+      margin-top: 20px;
       h2 {
         margin-bottom: 16px;
         font-size: 2rem;

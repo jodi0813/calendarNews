@@ -1,12 +1,14 @@
 .categorys {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
   padding: 30px;
-
-  .categoryTitle{
-  font-size: 1.5rem;
-  font-weight: 600;
+  width: 170px;
+  .categoryTitle {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #040320;
   }
   .labelBox {
     font-size: 1.3rem;
@@ -18,11 +20,13 @@
     align-items: center;
     height: 60px;
     background-color: #fff;
+    color: #040320;
     gap: 10px;
-    .check{
-         transform: scale(1.5);
-           accent-color: #e7410f;
-             cursor: pointer;
+    width: 100%;
+    .check {
+      transform: scale(1.5);
+      accent-color: #e7410f;
+      cursor: pointer;
     }
   }
 }
