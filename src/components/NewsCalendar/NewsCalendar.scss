@@ -1,0 +1,107 @@
+.calendarBox {
+  background-color: #fff;
+
+
+
+  .event-biotech {
+    background-color: #f8b8b8;
+    color: #000;
+    border-radius: 6px;
+    padding: 4px;
+  }
+
+  .event-security {
+    background-color: #a0c4ff;
+    color: #000;
+    border-radius: 6px;
+    padding: 4px;
+  }
+
+  .event-finance {
+    background-color: #caffbf;
+    color: #000;
+    border-radius: 6px;
+    padding: 4px;
+  }
+
+  .event-crypto {
+    background-color: #ffd6a5;
+    color: #000;
+    border-radius: 6px;
+    padding: 4px;
+  }
+
+  .event-ai {
+    background-color: #d0bfff;
+    color: #000;
+    border-radius: 6px;
+    padding: 4px;
+  }
+
+  .event-default {
+    background-color: #ddd;
+    color: #000;
+    border-radius: 6px;
+    padding: 4px;
+  }
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  .modal-content {
+    background: #fff;
+    width: 80%;
+    padding: 50px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 6%;
+    height: 80%;
+    overflow-y: auto;
+    button {
+      border: none;
+      cursor: pointer;
+      background-color: transparent;
+      position: absolute;
+      right: 20px;
+      top: 10px;
+    }
+    .popupDate {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      h2 {
+        margin-bottom: 16px;
+        font-size: 2rem;
+        font-weight: 600;
+        margin: 0;
+        padding: 0;
+      }
+    }
+    .content {
+      padding: 16px;
+      text-align: justify;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 31px;
+    }
+    .created {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      font-size: 14px;
+    }
+  }
+}

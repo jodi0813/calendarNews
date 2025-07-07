@@ -1,0 +1,28 @@
+.categorys {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+
+  .categoryTitle{
+  font-size: 1.5rem;
+  font-weight: 600;
+  }
+  .labelBox {
+    font-size: 1.3rem;
+    font-weight: 500;
+    border: 2px dashed #e41b1b;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    background-color: #fff;
+    gap: 10px;
+    .check{
+         transform: scale(1.5);
+           accent-color: #e7410f;
+             cursor: pointer;
+    }
+  }
+}
