@@ -13,7 +13,7 @@ function NewsCalendar({ selected }) {
   const localizer = dateFnsLocalizer({
     format,
     parse,
-    startOfWeek: () => startOfWeek(new Date(), { weekStartsOn: 7 }), //
+    startOfWeek: () => startOfWeek(new Date(), { weekStartsOn: 7 }),
     getDay,
     locales,
   });
@@ -83,6 +83,7 @@ function NewsCalendar({ selected }) {
             week: "週",
             day: "日",
             agenda: "列表",
+            showMore: () => "＋查看更多新聞",
           }}
           events={events}
           startAccessor="start"
@@ -90,9 +91,29 @@ function NewsCalendar({ selected }) {
           defaultView="month"
           views={["month"]}
           style={{ height: 700, width: 1200 }}
+          popup
+          formats={{
+            dayHeaderFormat: (date) =>
+              format(date, "MM月dd日 EEEE", { locale: zhTW }),
+          }}
           eventPropGetter={(event) => {
+            const groupId = event.resource.className;
+            const colorMap = {
+              "event-biotech": "#FF9999",
+              "event-security": "#66B3FF",
+              "event-finance": "#FFD966",
+              "event-crypto": "#B6D7A8",
+              "event-ai": "#C299FF",
+              "event-default": "#CCCCCC",
+            };
             return {
-              className: event.resource.className || "event-default",
+              style: {
+                backgroundColor: colorMap[groupId] || "#CCCCCC",
+                color: "white",
+                borderRadius: "4px",
+                padding: "2px 6px",
+                border: "none",
+              },
             };
           }}
           onSelectEvent={handleEventClick}
@@ -102,7 +123,7 @@ function NewsCalendar({ selected }) {
         <div className="modal-overlay">
           <div className="modal-content">
             <button onClick={closeModal}>
-              <FaXmark size={24} />
+              <FaXmark size={24} color="black"/>
             </button>
             <div className="popupDate">
               <div>ID：{selectedEvent.id}</div>
@@ -111,8 +132,8 @@ function NewsCalendar({ selected }) {
             </div>
             <div className="content">{selectedEvent.content}</div>
             <div className="created">
-              <div>{selectedEvent.created_at}</div>
-              <div>{selectedEvent.updated_at}</div>
+              <div>建立時間{selectedEvent.created_at}</div>
+              <div>更新時間{selectedEvent.updated_at}</div>
             </div>
           </div>
         </div>

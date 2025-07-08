@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function useNews({ startDate, endDate, keywordGroupIds = "1,2" }) {
+function useNews({ startDate, endDate, keywordGroupIds = "1,2,3,4,5" }) {
   const [newsList, setNewsList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

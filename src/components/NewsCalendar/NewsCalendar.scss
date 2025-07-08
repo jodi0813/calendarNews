@@ -14,53 +14,25 @@
     font-weight: 400;
     text-align: center;
   }
-
   .rbc-toolbar-label {
     color: #040320;
     font-weight: 600;
     font-size: 20px;
   }
-
-  .event-biotech {
-    background-color: #f8b8b8;
-    color: #000;
-    border-radius: 6px;
-    padding: 4px;
-  }
-
-  .event-security {
-    background-color: #a0c4ff;
-    color: #000;
-    border-radius: 6px;
-    padding: 4px;
-  }
-
-  .event-finance {
-    background-color: #caffbf;
-    color: #000;
-    border-radius: 6px;
-    padding: 4px;
-  }
-
-  .event-crypto {
-    background-color: #ffd6a5;
-    color: #000;
-    border-radius: 6px;
-    padding: 4px;
-  }
-
-  .event-ai {
-    background-color: #d0bfff;
-    color: #000;
-    border-radius: 6px;
-    padding: 4px;
-  }
-
   .event-default {
     background-color: #ddd;
     color: #000;
     border-radius: 6px;
     padding: 4px;
+  }
+  .rbc-show-more {
+    outline: none;
+    box-shadow: none;
+    color: #000;
+    font-weight: 500;
+    &:hover{
+      color:#e41b1b;
+    }
   }
 }
 .modal-overlay {
@@ -78,7 +50,6 @@
     background: #fff;
     width: 80%;
     padding: 50px;
-    // border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     text-align: center;
     display: flex;
