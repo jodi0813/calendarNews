@@ -123,11 +123,11 @@ function NewsCalendar({ selected }) {
         <div className="modal-overlay">
           <div className="modal-content">
             <button onClick={closeModal}>
-              <FaXmark size={24} color="black"/>
+              <FaXmark size={24} color="black" />
             </button>
+            <h2>{selectedEvent.subtitle}</h2>
             <div className="popupDate">
               <div>ID：{selectedEvent.id}</div>
-              <h2>{selectedEvent.subtitle}</h2>
               <div>{selectedEvent.post_date}</div>
             </div>
             <div className="content">{selectedEvent.content}</div>
