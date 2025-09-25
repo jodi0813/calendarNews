@@ -6,7 +6,7 @@ import "./NewsCalendar.scss";
 import useNews from "../../utils/api";
 import { useState } from "react";
 import { FaXmark } from "react-icons/fa6";
-function NewsCalendar({ selected }) {
+function NewsCalendar() {
   const locales = {
     "zh-TW": zhTW,
   };
@@ -20,42 +20,31 @@ function NewsCalendar({ selected }) {
   const today = new Date();
   const formattedToday = today.toISOString().slice(0, 10).replace(/-/g, "");
   const { newsList } = useNews({
-    startDate: "20250101",
-    endDate: formattedToday,
+    startdate: "2025/01/01",
+    enddate: "2025/09/30",
+    keyword: "",
   });
 
-  const keywordGroups = {
+  /*const keywordGroups = {
     1: { name: "生技醫藥", className: "event-biotech" },
     2: { name: "資訊安全", className: "event-security" },
     3: { name: "國際金融", className: "event-finance" },
     4: { name: "數位資產", className: "event-crypto" },
     5: { name: "人工智慧", className: "event-ai" },
-  };
+  };*/
 
-  const events = newsList
-    .filter((item) => {
-      const group = keywordGroups[item.keyword_group_id];
-      return selected[group?.name];
-    })
-
-    .map((item) => {
-      const group = keywordGroups[item.keyword_group_id] || {
-        name: "未知分類",
-        className: "event-default",
-      };
+  const events = newsList.map((item) => {
       return {
         id: item.id,
-        title: `${group.name}：${item.title.slice(0, 10)}...`,
+        title: item.title,  
         subtitle: item.title,
         content: item.content,
-        post_date: item.post_date,
-        created_at: item.created_at,
-        updated_at: item.updated_at,
-        start: new Date(item.post_date),
-        end: new Date(item.post_date),
+        post_date: item.postDate,
+        start: new Date(item.postDate),
+        end: new Date(item.postDate),
         allDay: true,
         resource: {
-          className: group.className,
+          className: "event-default",
         },
       };
     });
@@ -89,33 +78,14 @@ function NewsCalendar({ selected }) {
           startAccessor="start"
           endAccessor="end"
           defaultView="month"
-          views={["month"]}
+          views={["month", "week", "day", "agenda"]} 
           style={{ height: 700, width: 1200 }}
           popup
           formats={{
             dayHeaderFormat: (date) =>
               format(date, "MM月dd日 EEEE", { locale: zhTW }),
           }}
-          eventPropGetter={(event) => {
-            const groupId = event.resource.className;
-            const colorMap = {
-              "event-biotech": "#FF9999",
-              "event-security": "#66B3FF",
-              "event-finance": "#FFD966",
-              "event-crypto": "#B6D7A8",
-              "event-ai": "#C299FF",
-              "event-default": "#CCCCCC",
-            };
-            return {
-              style: {
-                backgroundColor: colorMap[groupId] || "#CCCCCC",
-                color: "white",
-                borderRadius: "4px",
-                padding: "2px 6px",
-                border: "none",
-              },
-            };
-          }}
+
           onSelectEvent={handleEventClick}
         />
       </div>
@@ -131,10 +101,7 @@ function NewsCalendar({ selected }) {
               <div>{selectedEvent.post_date}</div>
             </div>
             <div className="content">{selectedEvent.content}</div>
-            <div className="created">
-              <div>建立時間{selectedEvent.created_at}</div>
-              <div>更新時間{selectedEvent.updated_at}</div>
-            </div>
+            
           </div>
         </div>
       )}

@@ -1,21 +1,32 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+function stripHTML(str = "") {
+  return str.replace(/<[^>]*>/g, "").replace(/&nbsp;/g, " ").trim();
+}
+function useNews({ startdate, enddate, keyword }) {
 
-function useNews({ startDate, endDate, keywordGroupIds = "1,2,3,4,5" }) {
   const [newsList, setNewsList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get("/api/get_posts", {
+    axios.get("/api/newsapi.ashx", {
         params: {
-          keyword_group_ids: keywordGroupIds,
-          start_date: startDate,
-          end_date: endDate,
+          keyword: keyword,
+          startdate: startdate,
+          enddate: enddate,
         },
-      })
+       })
       .then((res) => {
-        setNewsList(res.data);
+        const mapped=res.data.map((item,idx)=>({
+          id: item.id ?? `news-${idx}`, 
+          title: item["標題"], 
+          content: stripHTML(item["內容"]),
+          postDate:  item["發布日期"],  
+          link: item["連結網址"], 
+          raw: item
+        }));
+        setNewsList(mapped);
         setLoading(false);
       })
       .catch((err) => {
@@ -23,7 +34,7 @@ function useNews({ startDate, endDate, keywordGroupIds = "1,2,3,4,5" }) {
         setError(err);
         setLoading(false);
       });
-  }, [startDate, endDate, keywordGroupIds]);
+  }, [startdate, enddate, keyword]);
 
   return { newsList, loading, error };
 }

@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://eunomics.net',
+        target: 'https://www.hpa.gov.tw/wf',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       }
